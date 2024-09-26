@@ -1,3 +1,0 @@
-package Hangman
-
-func Level() {}

@@ -20,12 +20,17 @@ func Start() {
 	switch input {
 	case "1":
 		fmt.Println("Niveau Facile")
+		LevelFacile()
 	case "2":
 		fmt.Println("Niveau Moyen")
+		LevelMoyen()
 	case "3":
 		fmt.Println("Niveau Difficile")
+		LevelDifficile()
 	case "0":
 		fmt.Println("Quitter")
+		fmt.Println(" ")
+		fmt.Println("Merci d'avoir joué au jeu a bientôt !!")
 	default:
 		fmt.Println("Ne vous échappez pas !")
 		Start()
