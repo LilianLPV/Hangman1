@@ -1,0 +1,3 @@
+package Hangman
+
+func Level() {}
