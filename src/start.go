@@ -3,14 +3,12 @@ package Hangman
 import "fmt"
 
 func Start() {
-	
 fmt.Println(`					 _   _  `)                                       
 fmt.Println(`					| | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  `) 
 fmt.Println(`					| |_| |/ _  | '_ \ / _  | '_   _ \ / _  | '_ \ `) 
 fmt.Println(`					|  _  | (_| | | | | (_| | | | | | | (_| | | | |`) 
 fmt.Println(`					|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|`) 
-fmt.Println(`									   |___/                     	   `)   
-                   
+fmt.Println(`						           |___/                     	   `)   
 	var input string
 	fmt.Println(" ")
 	fmt.Println("Bienvenue sur Hangman !")

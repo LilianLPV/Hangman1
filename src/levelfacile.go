@@ -5,6 +5,15 @@ import (
 	"math/rand"
 )
 
+func contains(slice []string, item string) bool {
+	for _, s := range slice {
+		if s == item {
+			return true
+		}
+	}
+	return false
+}
+
 func LevelFacile() {
 	var input string
 	var lettre1, lettre2 int
@@ -19,6 +28,10 @@ func LevelFacile() {
 		fmt.Println("Erreur :", err)
 		return
 	}
+
+	var LettreT []string
+	var MotT []string
+
 	fmt.Println("Bienvenue dans le Niveau Facile !")
 	lettre1 = rand.Intn(longueur)
 	for {
@@ -35,46 +48,90 @@ func LevelFacile() {
 			motCache[i] = '_'
 		}
 	}
-	fmt.Println(" ")
-	fmt.Println("Voici votre mot :", string(motCache))
-	fmt.Println(" ")
-	fmt.Println("Entrez une Lettre Miniscule !")
-	fmt.Scan(&input)
+	for {
+		fmt.Println(" ")
+		fmt.Println("Voici votre mot :", string(motCache))
+		fmt.Println(" ")
+		fmt.Println("Lettres déjà tentées :", LettreT, ", ")
+		fmt.Println(" ")
+		fmt.Println("Mots déjà tentés :", MotT, ", ")
+		fmt.Println(" ")
+		fmt.Println("Entrez une Lettre Miniscule ou un Mot !")
+		fmt.Println(" ")
+		fmt.Scanln(&input)
 
-	if len(input) != 1 {
-		fmt.Println("Erreur de saisie")
-		return
-	}
-	input = ToLower(input)
+		input = ToLower(input)
 
-	if !(input >= "a" && input <= "z") {
-		fmt.Println("Erreur de saisie")
-		return
-	}
+		if !(input >= "a" && input <= "z") {
+			fmt.Println(" ")
+			fmt.Println("Erreur de saisie, veuillez mettre une lettre ou un mot !")
+			fmt.Println(" ")
+		}
 
-	runeInput := []rune(input)[0] 
-    found := false
-    for i := 0; i < longueur; i++ {
-        if runeF[i] == runeInput {
-            motCache[i] = runeInput
-            found = true
-        }
-    }
-  
-	if found {
-		fmt.Println("Bravo ! La lettre", input, "est dans le mot.")
-	} else {
-		erreursfacile++
-		fmt.Println("Désolé, la lettre", input, "n'est pas dans le mot.")
-		fmt.Printf("Erreurs : %d/%d\n", erreursfacile, maxerreursfacile)
-		ErreursHangmanFacile(erreursfacile) 
-	if string(motCache) == motF {
-		fmt.Println("Félicitations ! Vous avez deviné le mot :", motF)
-		return
+		if len(input) > 1 {
+			if input == motF {
+				fmt.Println(" ")
+				fmt.Println("Félicitations ! Vous avez deviné le mot :", motF)
+				fmt.Println(" ")
+				Start()
+				return
+			} else {
+				erreursfacile += 2
+				fmt.Println(" ")
+				fmt.Println("Désolé,", input, "n'est pas le bon mot.")
+				fmt.Println(" ")
+				ClearTerminal()
+				fmt.Println(" ")
+				fmt.Printf("Erreurs : %d/%d\n", erreursfacile, maxerreursfacile)
+				ErreursHangmanFacile(erreursfacile)
+				if !contains(MotT, input) {
+					MotT = append(MotT, input)
+				}
+			}
+		}
+		runeInput := []rune(input)[0]
+		found := false
+		if len(input) == 1 {
+			for i := 0; i < longueur; i++ {
+				if runeF[i] == runeInput {
+					motCache[i] = runeInput
+					found = true
+				}
+			}
+		}
+		if found {
+			fmt.Println(" ")
+			fmt.Println("Bravo ! La lettre", input, "est dans le mot.")
+			fmt.Println(" ")
+			fmt.Printf("Erreurs : %d/%d\n", erreursfacile, maxerreursfacile)
+			if !contains(LettreT, input) {
+			LettreT = append(LettreT, input)
+			}
+		} else if len(input) == 1 {
+			erreursfacile++
+			fmt.Println(" ")
+			fmt.Println("Désolé, la lettre", input, "n'est pas dans le mot.")
+			fmt.Println(" ")
+			fmt.Printf("Erreurs : %d/%d\n", erreursfacile, maxerreursfacile)
+			ErreursHangmanFacile(erreursfacile)
+			if !contains(LettreT, input) {
+			LettreT = append(LettreT, input)
+			}
+		}
+		if string(motCache) == motF {
+			fmt.Println(" ")
+			fmt.Println("Félicitations ! Vous avez deviné le mot :", motF)
+			fmt.Println(" ")
+			Start()
+			return
+		}
+		if erreursfacile >= maxerreursfacile {
+			fmt.Println(" ")
+			fmt.Println("Désolé, vous avez fait trop d'erreurs. Le mot était :", motF)
+			fmt.Println(" ")
+			ErreursHangmanFacile(erreursfacile) // Affiche le pendu final si le joueur perd
+			Start()
+			return
+		}
 	}
 }
-	if erreursfacile >= maxerreursfacile {
-		fmt.Println("Désolé, vous avez fait trop d'erreurs. Le mot était :", motF)
-		ErreursHangmanFacile(erreursfacile) // Afficher le pendu final si le joueur perd
-}	
-	}

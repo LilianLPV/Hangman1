@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
-	"time"
+
 )
 
 func WordEasyRandom(motsfacile string) (string, error) {
@@ -29,7 +29,7 @@ func WordEasyRandom(motsfacile string) (string, error) {
 		return "", fmt.Errorf("le fichier est vide ou n'a pas de mots valides")
 	}
 
-	rand.Seed(time.Now().UnixNano())
+
 	motAleatoire := motF[rand.Intn(len(motF))]
 
 	return motAleatoire, nil
