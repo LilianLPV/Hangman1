@@ -3,6 +3,8 @@ package Hangman
 import "fmt"
 
 func Start() {
+	
+	ClearTerminal()
 fmt.Println(`                                                                                                                                                 
       ___           ___           ___           ___           ___           ___           ___     
      /__/\         /  /\         /__/\         /  /\         /__/\         /  /\         /__/\    
@@ -23,13 +25,13 @@ fmt.Println(`
 	fmt.Println(" ")
 	fmt.Println("Votre choix : ")
 	fmt.Println(" ")
-	fmt.Println("1. Niveau Facile")
+	fmt.Println("\033[92m1. Niveau Facile\033[0m")
 	fmt.Println(" ")
-	fmt.Println("2. Niveau Moyen")
+	fmt.Println("\033[93m2. Niveau Moyen\033[0m")
 	fmt.Println(" ")
-	fmt.Println("3. Niveau Difficile")
+	fmt.Println("\033[91m3. Niveau Difficile\033[0m")
 	fmt.Println(" ")
-	fmt.Println("0. Quitter")
+	fmt.Println("\033[97m0. Quitter\033[0m")
 	fmt.Scanln(&input)
 	switch input {
 	case "1":

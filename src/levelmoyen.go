@@ -21,8 +21,10 @@ func LevelMoyen() {
 
 	var LettreT []string
 	var MotT []string
-
-	fmt.Println("Bienvenue dans le Niveau Moyen !")
+	ClearTerminal()
+	fmt.Println("Bienvenue dans le \033[93mNiveau Moyen\033[0m !")
+	fmt.Println(" ")
+	fmt.Println("\033[1m\033[45mAttention les lettres afficher peuvent être afficher plusieurs fois !\033[0m")
 	lettre1 = rand.Intn(longueur)
 	for {
 		lettre2 = rand.Intn(longueur)
@@ -61,6 +63,7 @@ func LevelMoyen() {
 
 		if len(input) > 1 {
 			if input == motM {
+				ClearTerminal()
 				fmt.Println(" ")
 				fmt.Println("Félicitations ! Vous avez deviné le mot :", motM)
 				fmt.Println(" ")
@@ -68,10 +71,10 @@ func LevelMoyen() {
 				return
 			} else {
 				erreursmoyen += 2
+				ClearTerminal()
 				fmt.Println(" ")
 				fmt.Println("Désolé,", input, "n'est pas le bon mot.")
 				fmt.Println(" ")
-				ClearTerminal()
 				fmt.Println(" ")
 				fmt.Printf("Erreurs : %d/%d\n", erreursmoyen, maxerreursmoyen)
 				ErreursHangmanFacile(erreursmoyen)
@@ -91,6 +94,7 @@ func LevelMoyen() {
 			}
 		}
 		if found {
+			ClearTerminal()
 			fmt.Println(" ")
 			fmt.Println("Bravo ! La lettre", input, "est dans le mot.")
 			fmt.Println(" ")
@@ -100,6 +104,7 @@ func LevelMoyen() {
 			}
 		} else if len(input) == 1 {
 			erreursmoyen++
+			ClearTerminal()
 			fmt.Println(" ")
 			fmt.Println("Désolé, la lettre", input, "n'est pas dans le mot.")
 			fmt.Println(" ")
@@ -110,6 +115,7 @@ func LevelMoyen() {
 			}
 		}
 		if string(motCache) == motM {
+			ClearTerminal()
 			fmt.Println(" ")
 			fmt.Println("Félicitations ! Vous avez deviné le mot :", motM)
 			fmt.Println(" ")
@@ -117,6 +123,7 @@ func LevelMoyen() {
 			return
 		}
 		if erreursmoyen >= maxerreursmoyen {
+			ClearTerminal()
 			fmt.Println(" ")
 			fmt.Println("Désolé, vous avez fait trop d'erreurs. Le mot était :", motM)
 			fmt.Println(" ")
