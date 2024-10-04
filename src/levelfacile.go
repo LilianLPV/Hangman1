@@ -20,7 +20,7 @@ func LevelFacile() {
 	var erreursfacile int
 	const maxerreursfacile = 10
 
-	motF, err := WordEasyRandom("motsfacile.txt")
+	motF, err := WordEasyRandom("docs/motsfacile.txt")
 	runeF := []rune(motF)
 
 	longueur := len(motF)
@@ -52,9 +52,9 @@ func LevelFacile() {
 		fmt.Println(" ")
 		fmt.Println("Voici votre mot :", string(motCache))
 		fmt.Println(" ")
-		fmt.Println("Lettres déjà tentées :", LettreT, ", ")
+		fmt.Println("Lettres déjà tentées :", LettreT,)
 		fmt.Println(" ")
-		fmt.Println("Mots déjà tentés :", MotT, ", ")
+		fmt.Println("Mots déjà tentés :", MotT,)
 		fmt.Println(" ")
 		fmt.Println("Entrez une Lettre Miniscule ou un Mot !")
 		fmt.Println(" ")

@@ -10,7 +10,7 @@ func LevelMoyen() {
 	var erreursmoyen int
 	const maxerreursmoyen = 8
 
-	motM, err := WordEasyRandom("motsfacile.txt")
+	motM, err := WordEasyRandom("docs/motsmoyen.txt")
 	runeM := []rune(motM)
 
 	longueur := len(motM)
@@ -22,7 +22,7 @@ func LevelMoyen() {
 	var LettreT []string
 	var MotT []string
 
-	fmt.Println("Bienvenue dans le Niveau Facile !")
+	fmt.Println("Bienvenue dans le Niveau Moyen !")
 	lettre1 = rand.Intn(longueur)
 	for {
 		lettre2 = rand.Intn(longueur)

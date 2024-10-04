@@ -11,7 +11,7 @@ func LevelDifficile() {
 	var erreursdifficile int
 	const maxerreursdifficile = 6
 
-	motD, err := WordEasyRandom("motsfacile.txt")
+	motD, err := WordEasyRandom("docs/motsdifficile.txt")
 	runeD := []rune(motD)
 
 	longueur := len(motD)
@@ -23,7 +23,7 @@ func LevelDifficile() {
 	var LettreT []string
 	var MotT []string
 
-	fmt.Println("Bienvenue dans le Niveau Facile !")
+	fmt.Println("Bienvenue dans le Niveau Difficile !")
 	lettre1 = rand.Intn(longueur)
 	for {
 		lettre2 = rand.Intn(longueur)
